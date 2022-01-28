@@ -22,32 +22,28 @@ Developed by: NITHISHWAR S
 RegisterNumber: 21002766
 '''
 import numpy as np
-
+import matplotlib.pyplot as plt
 # Preprocessing Input data
-
 X = np.array(eval(input()))
 Y = np.array(eval(input()))
-
 # Building the model
-
-X_mean = np.mean(X)
-Y_mean = np.mean(Y)
-num = 0
-den = 0
+XMean=np.mean(X)
+YMean=np.mean(Y)
+num,den=0,0
 for i in range(len(X)):
-	num += (X[i] - X_mean)*(Y[i] - Y_mean)
-	den += (X[i] - X_mean)**2
-m = num / den
-c = Y_mean - m*X_mean
-
-# write your code here
-
+  num+=(X[i]-XMean)*(Y[i]-YMean)
+  den+=(X[i]-XMean)**2
+m=num/den
+#y=mx+c
+c=YMean-m*XMean
 print (m, c)
-Y_pred = m*X + c
-
 #Predict the output
-print (Y_pred)
-
+Y_Pred=m*X+c
+print (Y_Pred)
+#plotting graph
+plt.scatter(X,Y)
+plt.plot(X,Y_Pred,color="red")
+plt.show()
 
 
 
